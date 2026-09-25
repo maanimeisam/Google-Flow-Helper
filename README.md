@@ -2,7 +2,7 @@
 
 **Google Flow Helper** is a lightweight, standalone userscript that unlocks limitations in Google Flow.
 
-It dynamically intercepts and patches API configuration responses on the fly using a remote specification, complete with a beautiful RTL (Persian) floating UI.
+It dynamically intercepts and patches API configuration responses on the fly using a remote specification.
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Platform](https://img.shields.io/badge/Platform-Tampermonkey-blue)
@@ -32,7 +32,6 @@ Before installing, ensure you have a Userscript Manager extension installed in y
 2. **Targeting:** It identifies requests targeting Google's internal `/_/AiSandboxAngularFrontend/data/batchexecute` endpoint.
 3. **Spec Fetching:** Using `GM_xmlhttpRequest` (to bypass CORS restrictions), it fetches a JSON specification from a remote server. This spec defines exactly which array index/flag needs to be flipped to bypass limitations.
 4. **Payload Patching:** When the targeted XHR completes, the script parses the response, locates the specific RPC ID (`cPZSdc`), flips the target boolean flag to `true`, recalculates the frame length headers, and passes the modified string back to the Google Flow frontend.
-5. **DOM Sync:** State updates are synced to a `data-flow-local-diagnostic` attribute on the `<html>` tag and reflected in the injected UI panel.
 
 ---
 
